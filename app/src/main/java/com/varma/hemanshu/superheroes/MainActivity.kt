@@ -1,15 +1,17 @@
 package com.varma.hemanshu.superheroes
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.varma.hemanshu.superheroes.repository.HeroesRepo
+import com.varma.hemanshu.superheroes.ui.heroesscreen.HeroesList
 import com.varma.hemanshu.superheroes.ui.theme.SuperHeroesTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,25 +24,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Hemanshu")
+                    HeroesList(heroes = HeroesRepo.heroes)
                 }
             }
         }
     }
 }
 
+@Preview(showSystemUi = true)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun HeroesListLightPreview() {
+    SuperHeroesTheme {
+        HeroesList(heroes = HeroesRepo.heroes)
+    }
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun GreetingPreview() {
+fun HeroesListDarkPreview() {
     SuperHeroesTheme {
-        Greeting("Hemanshu")
+        HeroesList(heroes = HeroesRepo.heroes)
     }
 }
