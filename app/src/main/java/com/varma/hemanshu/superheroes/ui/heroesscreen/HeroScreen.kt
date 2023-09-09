@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.varma.hemanshu.superheroes.R
 import com.varma.hemanshu.superheroes.model.Hero
+import com.varma.hemanshu.superheroes.repository.HeroesRepo
 import com.varma.hemanshu.superheroes.ui.theme.SuperHeroesTheme
 
 @Composable
@@ -106,5 +107,21 @@ fun HeroItemDarkPreview() {
 
     SuperHeroesTheme {
         HeroItem(hero = hero)
+    }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun HeroesListLightPreview() {
+    SuperHeroesTheme {
+        HeroesList(heroes = HeroesRepo.heroes)
+    }
+}
+
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun HeroesListDarkPreview() {
+    SuperHeroesTheme {
+        HeroesList(heroes = HeroesRepo.heroes)
     }
 }
